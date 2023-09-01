@@ -38,6 +38,15 @@ jobs:
           name: Login to docker (ECR)
           command: aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 163668745705.dkr.ecr.eu-west-3.amazonaws.com
 
+      - run:
+          name: Build docker image
+          command: docker build -t 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH} .
+
+      - run:
+          name: Push docker image to registry (ECR)
+          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH}
+
+
 workflows:
   deploy-surfy:
     jobs:
