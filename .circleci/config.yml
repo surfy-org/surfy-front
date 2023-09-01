@@ -40,11 +40,11 @@ jobs:
 
       - run:
           name: Build docker image
-          command: docker build -t 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH} .
+          command: docker build -t 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy:${CIRCLE_BRANCH} .
 
       - run:
           name: Push docker image to registry (ECR)
-          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH}
+          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy:${CIRCLE_BRANCH}
 
 
 workflows:
