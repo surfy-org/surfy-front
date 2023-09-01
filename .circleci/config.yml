@@ -7,6 +7,7 @@ jobs:
       - run:
           name: Say Hello
           command: /bin/bash echo "Hello"
+
 workflows:
   build-deploy:
     jobs:
