@@ -20,6 +20,9 @@ jobs:
       - run:
           name: Check node version
           command: node -v 
+      - run:
+          name: Install dev dependancies
+          command: yarn install
 
 workflows:
   deploy-surfy:
