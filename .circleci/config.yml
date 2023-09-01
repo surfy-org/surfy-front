@@ -9,7 +9,7 @@ jobs:
       # SETUP
       - run:
           name: Say Hello
-          command: /bin/bash echo "Hello"
+          command: echo "Hello"
 
 workflows:
   build-deploy:
