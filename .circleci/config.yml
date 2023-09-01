@@ -1,7 +1,7 @@
 # Javascript Node CircleCI 2.1 configuration file
 version: 2.1
 jobs:
-  test:
+  mytest:
     steps:
       # SETUP
       - run:
@@ -10,7 +10,7 @@ jobs:
 workflows:
   build-deploy:
     jobs:
-      - test:
+      - mytest:
           filters:
             branches:
               only:
