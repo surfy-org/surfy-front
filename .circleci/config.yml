@@ -3,19 +3,6 @@ version: 2.1
 orbs:
   aws-cli: circleci/aws-cli@2.1
 jobs:
-  aws-cli-cred-setup:
-    executor: aws-cli/default
-    steps:
-      - aws-cli/setup:
-          aws-access-key-id: AWS_ACCESS_KEY
-          aws-secret-access-key: AWS_ACCESS_SECRET
-          aws-region: AWS_REGION_NAME
-    
-      - run:
-          name: Configure aws
-          command: aws configure
-
-
   build_package:
     machine:
       image: ubuntu-2004:202111-02
@@ -59,5 +46,3 @@ workflows:
             branches:
               only:
                 - main
-      - aws-cli-cred-setup:
-          context: aws
