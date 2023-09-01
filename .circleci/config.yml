@@ -1,5 +1,7 @@
 # Javascript Node CircleCI 2.1 configuration file
 version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@2.1
 jobs:
   build_package:
     machine:
@@ -34,7 +36,6 @@ jobs:
       - run:
           name: Login to docker (ECR)
           command: aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 163668745705.dkr.ecr.eu-west-3.amazonaws.com
-
 
 workflows:
   deploy-surfy:
