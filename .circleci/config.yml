@@ -1,0 +1,13 @@
+# Javascript Node CircleCI 2.1 configuration file
+version: 2.1
+jobs:
+  test:
+    steps:
+      # SETUP
+      - run:
+          name: Say Hello
+          command: /bin/bash echo "Hello"
+workflows:
+  build-deploy:
+    jobs:
+      - test:
