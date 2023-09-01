@@ -1,20 +1,21 @@
 # Javascript Node CircleCI 2.1 configuration file
 version: 2.1
 jobs:
-  mytest:
+  build_package:
     machine:
       image: ubuntu-2004:202111-02
       docker_layer_caching: true
     steps:
+      - checkout
       # SETUP
       - run:
           name: Say Hello
           command: echo "Hello"
 
 workflows:
-  build-deploy:
+  deploy-surfy:
     jobs:
-      - mytest:
+      - build_package:
           filters:
             branches:
               only:
