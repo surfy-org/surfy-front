@@ -10,7 +10,16 @@ jobs:
       # SETUP
       - run:
           name: Say Hello
-          command: echo "Hello"
+          command: echo "Hello Surfy App !"
+      - run:
+          name: Install  Node.js 16.13.0 with build in nvm tool
+          command: |
+            export NVM_DIR="/opt/circleci/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm install v16.13.0 && nvm use v16.13.0 && nvm alias default v16.13.0
+      - run:
+          name: Check node version
+          command: node -v 
 
 workflows:
   deploy-surfy:
