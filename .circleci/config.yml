@@ -43,10 +43,6 @@ jobs:
           command: sudo apt-get update && sudo apt-get install awscli
 
       - run:
-          name: Configure aws
-          command: aws configure
-
-      - run:
           name: Login to docker (ECR)
           command: aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 163668745705.dkr.ecr.eu-west-3.amazonaws.com
 
