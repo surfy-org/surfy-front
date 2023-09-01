@@ -7,6 +7,7 @@ jobs:
       docker_layer_caching: true
     steps:
       - checkout
+
       # SETUP
       - run:
           name: Say Hello
@@ -20,9 +21,20 @@ jobs:
       - run:
           name: Check node version
           command: node -v 
+    
+     # BUILD
       - run:
           name: Install dev dependancies
           command: yarn install
+
+      # PUSH IMAGE TO AWS (ECR)
+      - run:
+          name: Setup AWS CLI
+          command: sudo apt-get update && sudo apt-get install awscli
+      - run:
+          name: Login to docker (ECR)
+          command: aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 163668745705.dkr.ecr.eu-west-3.amazonaws.com
+
 
 workflows:
   deploy-surfy:
