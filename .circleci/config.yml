@@ -40,11 +40,16 @@ jobs:
 
       - run:
           name: Build docker image
-          command: docker build -t 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy .
+          command: docker build -t surfy .
+
+      - run:
+          name: Tag docker image
+          command: docker tag surfy:latest 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy:latest
+
 
       - run:
           name: Push docker image to registry (ECR)
-          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy
+          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy:latest
 
 workflows:
   deploy-surfy:
