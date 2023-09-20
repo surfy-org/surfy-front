@@ -44,7 +44,7 @@ jobs:
 
       - run:
           name: Tag docker image
-          command: docker tag surfy:latest 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy:latest
+          command: docker tag surfy-frontend:latest 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
 
 
       - run:
