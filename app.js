@@ -10,6 +10,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, hostname, () => {
-    console.log(`Welcome Surfy app`);
+    console.log(`Welcome Terraform Surfy app`);
     console.log(`Server running at http://${hostname}:${port}/`);
 });
