@@ -46,10 +46,18 @@ jobs:
           name: Tag docker image
           command: docker tag surfy:latest 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
 
-
       - run:
           name: Push docker image to registry (ECR)
           command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
+
+deploy_aws_production:
+    executor: aws-cli/default
+    steps:
+      - aws-cli/setup
+      - run:
+          name: Deploy new image to ECS
+          command: aws ecs update-service --cluster arn:aws:ecs:eu-west-3:163668745705:cluster/my-cluster --service arn:aws:ecs:eu-west-3:163668745705:task/my-cluster/ef3c80e8dd3848968c911b8a04e229be --force-new-deployment
+
 
 workflows:
   deploy-surfy:
@@ -59,3 +67,8 @@ workflows:
             branches:
               only:
                 - main            
+      - deploy_aws_production:
+          context: aws
+          requires:
+            - build_package
+ 
