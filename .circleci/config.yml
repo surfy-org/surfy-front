@@ -71,4 +71,7 @@ workflows:
           context: aws
           requires:
             - build_package
- 
+          filters:
+            branches:
+              only:
+                - main 
