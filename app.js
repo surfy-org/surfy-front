@@ -3,11 +3,12 @@ const http = require('http');
 
 const ip = '0.0.0.0';
 const port = 3000;
+const hostname = os.hostname();
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello alex !');
+  res.end(`Hello! Your host is : ${hostname}`);
 });
 
 server.listen(port, ip, () => {
