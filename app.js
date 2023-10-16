@@ -1,15 +1,17 @@
+const os = require('os');
 const http = require('http');
 
-const hostname = '0.0.0.0';
+const ip = '0.0.0.0';
 const port = 3000;
+const hostname = os.hostname();
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello ! Ready for surfing ?');
+  res.end(`Hello! Your host is : ${hostname}`);
 });
 
 server.listen(port, hostname, () => {
     console.log(`Welcome Node Surfy app`);
-    console.log(`Server running at http://${hostname}:${port}/`);
+    console.log(`Server running at http://${ip}:${port}/`);
 });
