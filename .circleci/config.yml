@@ -40,15 +40,23 @@ jobs:
 
       - run:
           name: Build docker image
-          command: docker build -t surfy .
-
-      - run:
-          name: Tag docker image
-          command: docker tag surfy:latest 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
-
+          command: docker build -t 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH} -t 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH}-$(date +"%Y%m%d")-${CIRCLE_SHA1} .
+      
       - run:
           name: Push docker image to registry (ECR)
-          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
+          command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH} && docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/frontend:${CIRCLE_BRANCH}-$(date +"%Y%m%d")-${CIRCLE_SHA1}
+
+      #- run:
+      #    name: Build docker image
+      #    command: docker build -t surfy .
+
+      #- run:
+      #    name: Tag docker image
+      #    command: docker tag surfy:latest 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
+
+      #- run:
+      #    name: Push docker image to registry (ECR)
+      #    command: docker push 163668745705.dkr.ecr.eu-west-3.amazonaws.com/surfy-frontend:latest
 
   deploy_aws_production:
     executor: aws-cli/default
