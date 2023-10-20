@@ -8,7 +8,7 @@ const hostname = os.hostname();
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end(`Hey surfy ! Your host is : ${hostname}`);
+  res.end(`Hey black ! Your host is : ${hostname}`);
 });
 
 server.listen(port, ip, () => {
